@@ -1,6 +1,6 @@
 const returnClarifaiRequestOptions = (imageUrl) => {
   // Your PAT (Personal Access Token) can be found in the portal under Authentification
-  const PAT = 'f7cb8adce82e4c8d8e46368e8baf621f';
+  const PAT = process.env.API_CLARIFAI;
   // Specify the correct user_id/app_id pairings
   // Since you're making inferences outside your app's scope
   const USER_ID = 'saucedo817';       
