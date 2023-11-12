@@ -35,7 +35,7 @@ const returnClarifaiRequestOptions = (imageUrl) => {
   return requestOptions;  
 }
 
-const handleApiCall = (req, res) => {
+const handleApiCall = (req, res, fetch) => {
 	fetch("https://api.clarifai.com/v2/models/" + 'face-detection'  + "/outputs", returnClarifaiRequestOptions(req.body.input))
 	    .then((response) => response.text())
 	    .then((result) => {
