@@ -25,10 +25,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // //Test only - when you have a database variable you want to use
-// app.get('/', (req, res)=> {
-//   res.send("success");
-// })
-
+app.get('/', (req, res)=> {  res.send("success");})
 app.post('/signin', (req,res) => { signin.handleSignin(req, res, db, bcrypt) })
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 app.get('/profile/:id', (req,res) => { profile.handleProfileGet(req, res, db) })
