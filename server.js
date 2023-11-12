@@ -1,12 +1,12 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt-nodejs');
-const cors = require('cors');
-const knex = require('knex');
-const register = require('./controllers/register')
-const signin = require('./controllers/signin')
-const profile = require('./controllers/profile')
-const image = require('./controllers/image')
+import express from "express";
+import bcrypt from "bcrypt-nodejs";
+import cors  from "cors";
+import knex  from "knex";
+import fetch from "node-fetch";
+import register from "./controllers/register.js"; 
+import signin from "./controllers/signin.js";
+import profile from "./controllers/profile.js";
+import image from "./controllers/image.js";
 
 const db = knex({
   client: 'pg',
@@ -23,10 +23,9 @@ const db = knex({
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cors());
 
-// //Test only - when you have a database variable you want to use
 app.get('/', (req, res)=> {  res.send("success");})
 app.post('/signin', (req,res) => { signin.handleSignin(req, res, db, bcrypt) })
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
@@ -35,6 +34,6 @@ app.put('/image', (req, res) => { image.handleImage(req, res, db) })
 app.post('/imageurl', (req, res) => { image.handleApiCall(req, res) })
 
 
-app.listen(process.env.PORT || 3000, ()=> {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`app is running on port ${process.env.PORT}`);
 })

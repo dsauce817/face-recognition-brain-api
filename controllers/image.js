@@ -60,7 +60,4 @@ const handleImage = (req, res, db) => {
 }
 
 
-module.exports = {
-  handleImage,
-  handleApiCall
-}
+export default {handleImage,handleApiCall}
